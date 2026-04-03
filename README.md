@@ -211,3 +211,71 @@ void reconnect() {
     }
   }
 }
+```
+* Click the **Upload** arrow in Arduino IDE. 
+* Open the **Serial Monitor** (magnifying glass) at **115200 baud** to ensure it says "Connected to Ignition".
+
+---
+
+## 🏢 Phase 4: Setting up the Post Office (Ignition Gateway)
+
+### 1. Install the MQTT Modules
+* Go to the Cirrus Link website and download **MQTT Distributor** and **MQTT Engine** (`.modl` files).
+* In your browser, go to `http://localhost:8088` (Ignition Gateway).
+* Go to **Config > System > Modules**. 
+* Scroll to the bottom, click **Install or Upgrade a Module...** and upload both files. Ensure both say "Running."
+
+### 2. Create the "Guest List" (Security)
+We need to give the ESP32 permission to drop off data.
+* On the left menu, under **MQTT Distributor**, click **Settings**.
+* Go to the **Users** tab.
+* Create a new user:
+    * **Username:** `esp32`
+    * **Password:** `farm`
+    * **ACLs:** `RW #`
+
+---
+
+## 🎨 Phase 5: Building the Digital Twin (Ignition Designer)
+
+### 1. Open Ignition Designer
+* Launch the Designer and open your project.
+* In the **Project Browser** (top left), right-click on **Perspective > Views** and select **New View**. 
+* Name it `Dashboard`.
+
+### 2. Display the Light Sensor (Data Coming IN)
+* Look at the **Tag Browser** panel (bottom left).
+* Drill down into the folders the Engine automatically created: `MQTT Engine > Edge Nodes > farm`.
+* Drag the **lightLevel** tag onto your blank dashboard canvas and select **Label**.
+* *You now have a live number on your screen.*
+
+### 3. Control the LED (Data Going OUT)
+Because the physical board expects the literal text words "ON" and "OFF", we use a Python translation script.
+* Open the **Perspective Component Palette** and drag a **Toggle Switch** onto your canvas.
+* Right-click the Toggle Switch and select **Configure Events**.
+* Select **onActionPerformed**, click the **+** icon, and select **Script**.
+* Paste this Python code:
+
+```python
+# 1. Get the status of the switch (True/False)
+is_on = self.props.selected
+
+# 2. Translate it to the text the Arduino expects
+msg = "ON" if is_on else "OFF"
+
+# 3. Fire the command directly to the local MQTT Post Office
+# Note: "Chariot SCADA" is the default nickname of your local MQTT connection
+system.cirruslink.engine.publish("Chariot SCADA", "farm/light/set", str(msg).encode("utf-8"), 0, 0)
+
+```
+* Click **OK**.
+
+### 4. Test It!
+* Click the **Play Button ▶️** at the top to enter Preview Mode.
+* Click your Toggle Switch. Look at your physical farm. The LED should turn on and off instantly!
+
+---
+
+## 🚨 Quick Troubleshooting
+* **Red Error when Saving:** Your 2-hour Gateway trial likely expired. Go to `http://localhost:8088`, click the green banner to reset the trial, and try saving again.
+* **Tag says "String" instead of Number:** If you try to put `lightLevel` on a gauge component and it throws a Data Type error, use an Expression binding like `toInt({[MQTT Engine]Edge Nodes/farm/lightLevel})` to force it to read as a number.
