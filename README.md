@@ -43,25 +43,23 @@ This is where we write the code for the physical board.
 
 ### 3. Prepare the Server (Ignition 8.3)
 
-Ignition is the industrial "brain" of your farm. We use the free **Maker Edition**.
-
-### 3.1. Install and Launch
+3.1. Install and Launch
 1.  **Download Ignition 8.3:** Choose the version for your computer (Intel/Apple Silicon for Mac; x64 for Windows).
 2.  **Install:** Run the installer.
 3.  **Launch:** Go to [http://localhost:8088](http://localhost:8088) in your browser.
 4.  **Create User:** Set up an Admin account. **Write down your password!**
 
-### 3.2. Install MQTT Modules
+3.2. Install MQTT Modules
 1.  **Download:** Use the [Cirrus Link Nightly Builds](https://docs.chariot.io/display/CLD83/Nightly+Module+Builds) to get **MQTT Distributor** and **MQTT Engine** (Version 5.x).
 2.  **Go to Modules:** In the Ignition sidebar, click **Platform** > **System** > **Modules**.
 3.  **Install:** Click the blue **Install or Upgrade Module +** button.
 4.  **Upload:** Select your `.modl` files. Accept the license and certificate.
 5.  **Check Status:** It will show **INACTIVE. PENDING RESTART**. This is expected!
 
-### 3.3. Restart the Gateway (Required for 8.3)
+3.3. Restart the Gateway (Required for 8.3)
 You must manually restart the service to activate the new modules.
 
-#### 🍎 For macOS Users
+🍎 For macOS Users
 1.  Open **Terminal** (Command + Space, type "Terminal").
 2.  Navigate to the folder:  
     `cd /usr/local/ignition`
@@ -69,25 +67,17 @@ You must manually restart the service to activate the new modules.
     `sudo ./ignition.sh restart`  
     *(Note: Type your Mac password when prompted; you won't see characters as you type.)*
 
-#### 🪟 For Windows Users
+🪟 For Windows Users
 1.  Open **Command Prompt** as Administrator (Right-click > Run as Admin).
 2.  Navigate to the folder:  
     `cd "C:\Program Files\Inductive Automation\Ignition"`
 3.  Run the restart command:  
     `gwcmd.bat -r`
 
-### 3.4. Final Verification
+3.4. Final Verification
 1.  Refresh your browser at [http://localhost:8088](http://localhost:8088).
 2.  Go back to **Modules**.
 3.  Confirm both MQTT modules show a solid green **ACTIVE** status.
-
----
-
-## 🚨 IMPORTANT: The "Servo Trap" 🚨
-Before moving to Phase 4 (Assembly):
-* You **must** run the `6.1Servo` code in Arduino IDE.
-* Set the motor to **180°** (Closed).
-* **Do not** finish the feeding cabin assembly until the motor is set, or the door may break!
 
 ---
 
