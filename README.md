@@ -247,11 +247,13 @@ void reconnect() {
 
 ## 🏢 Phase 4: Setting up the Post Office (Ignition Gateway)
 
-### 1. Install the MQTT Modules
-* Go to the Cirrus Link website and download **MQTT Distributor** and **MQTT Engine** (`.modl` files).
-* In your browser, go to `http://localhost:8088` (Ignition Gateway).
-* Go to **Config > System > Modules**. 
-* Scroll to the bottom, click **Install or Upgrade a Module...** and upload both files. Ensure both say "Running."
+### 1. Create a Custom Namespace (The "Topic Catcher")
+* In your Ignition Gateway, go to Settings > MQTT Engine.
+* Click the Namespaces tab, then the Custom sub-tab.
+* Click Create new Custom Namespace...
+* Name: Call it SmartFarm.
+* Subscription Topic: Type farm/# (This tells Ignition to listen to every message that starts with the word "farm").
+* Click Save Changes.
 
 ### 2. Create the "Guest List" (Security)
 We need to give the ESP32 permission to drop off data.
