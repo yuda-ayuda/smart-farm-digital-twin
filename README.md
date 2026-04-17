@@ -114,12 +114,15 @@ Copy the code below into a new Arduino file. You must edit the top 3 lines to ma
 ```cpp
 #include <WiFi.h>
 #include <PubSubClient.h>
+#include "esp_wifi.h"
+#include "esp_wpa2.h"
 
 // ==========================================
 //      ⬇️ UPDATE THESE 3 LINES ⬇️
 // ==========================================
 const char* ssid = "YOUR_WIFI_NAME";        // Keep the quotes!
-const char* password = "YOUR_WIFI_PASSWORD";
+const char* username = "YOUR_USERNAME";   // Keep the quotes!
+const char* password = "YOUR_WIFI_PASSWORD"; // Keep the quotes!
 const char* mqtt_server = "172.16.x.x";   // Your Computer's IP Address
 
 // --- CONFIGURATION ---
@@ -215,13 +218,25 @@ void loop() {
 // --- NETWORK HELPERS ---
 void setup_wifi() {
   delay(10);
+  Serial.println("Connecting to WPA2 Enterprise WiFi...");
   Serial.print("Connecting to WiFi...");
-  WiFi.begin(ssid, password);
+  WiFi.disconnect(true);
+  WiFi.mode(WIFI_STA);
+  // Set WPA2 Enterprise credentials
+  esp_wifi_sta_wpa2_ent_set_identity((uint8_t *)username, strlen(username));
+  esp_wifi_sta_wpa2_ent_set_username((uint8_t *)username, strlen(username));
+  esp_wifi_sta_wpa2_ent_set_password((uint8_t *)password, strlen(password));
+  // Enable WPA2 Enterprise (NEW WAY)
+  esp_wifi_sta_wpa2_ent_enable();
+
+  WiFi.begin(ssid);
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
   }
-  Serial.println("Connected!");
+  Serial.println("\nWiFi connected!");
+  Serial.print("IP Address: ");
+  Serial.println(WiFi.localIP());
 }
 
 void reconnect() {
