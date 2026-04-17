@@ -118,7 +118,7 @@ Copy the code below into a new Arduino file. You must edit the top 3 lines to ma
 #include "esp_wpa2.h"
 
 // ==========================================
-//      ⬇️ UPDATE THESE 3 LINES ⬇️
+//      ⬇️ UPDATE THESE 4 LINES ⬇️
 // ==========================================
 const char* ssid = "YOUR_WIFI_NAME";        // Keep the quotes!
 const char* username = "YOUR_USERNAME";   // Keep the quotes!
