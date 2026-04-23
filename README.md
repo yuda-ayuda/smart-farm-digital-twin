@@ -40,6 +40,9 @@ This is where we write the code for the physical board.
     * Go to *Sketch > Include Library > Manage Libraries*.
     * Search for and install **PubSubClient** by Nick O'Leary.
     * (Optional) Install the library folder that came with your specific kit using *Add .ZIP Library*.
+5.  **Install Driver for Windows:**
+    * Follow the steps to Install the driver in the following link: 
+    * https://docs.keyestudio.com/projects/KS0567/en/latest/wiki/Arduino/arduino.html#install-driver-for-keyestudio-esp32-plus-board
 
 ### 3. Prepare the Server (Ignition 8.3)
 
