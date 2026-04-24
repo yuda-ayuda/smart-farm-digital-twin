@@ -37,7 +37,7 @@ Your Mac needs a translator to speak to the chip on the farm kit.
 
 ### 2. Prepare Arduino IDE
 This is where we write the code for the physical board.
-1.  Download **Arduino IDE 2.0**.
+1.  Download **Arduino IDE 2.0**. or later
 2.  **Add the ESP32 Board Manager:**
     * Go to *Settings* (or Preferences).
     * Paste this link into "Additional Boards Manager URLs":
