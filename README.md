@@ -147,6 +147,16 @@ We need to create an MQTT User so the board is allowed to talk to the server.
     * **Username:** `esp32`
     * **Password:** `farm`
     * **ACLs:** `RW #` (This creates a "Read/Write All" permission).
+---
+## 🏢 Phase 4: Setting up the Post Office (Ignition Gateway)
+
+### 1. Create a Custom Namespace (The "Topic Catcher")
+* In your Ignition Gateway, go to Settings > MQTT Engine.
+* Click the Namespaces tab, then the Custom sub-tab.
+* Click Create new Custom Namespace...
+* Name: Call it SmartFarm.
+* Subscription Topic: Type farm/# (This tells Ignition to listen to every message that starts with the word "farm").
+* Click Save Changes.
 
 ### The Master Sketch
 Copy the code below into a new Arduino file. You must edit the top 3 lines to match your home network.
@@ -297,27 +307,6 @@ void reconnect() {
 ```
 * Click the **Upload** arrow in Arduino IDE. 
 * Open the **Serial Monitor** (magnifying glass) at **115200 baud** to ensure it says "Connected to Ignition".
-
----
-
-## 🏢 Phase 4: Setting up the Post Office (Ignition Gateway)
-
-### 1. Create a Custom Namespace (The "Topic Catcher")
-* In your Ignition Gateway, go to Settings > MQTT Engine.
-* Click the Namespaces tab, then the Custom sub-tab.
-* Click Create new Custom Namespace...
-* Name: Call it SmartFarm.
-* Subscription Topic: Type farm/# (This tells Ignition to listen to every message that starts with the word "farm").
-* Click Save Changes.
-
-### 2. Create the "Guest List" (Security)
-We need to give the ESP32 permission to drop off data.
-* On the left menu, under **MQTT Distributor**, click **Settings**.
-* Go to the **Users** tab.
-* Create a new user:
-    * **Username:** `esp32`
-    * **Password:** `farm`
-    * **ACLs:** `RW #`
 
 ---
 
