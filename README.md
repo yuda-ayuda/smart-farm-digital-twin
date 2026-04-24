@@ -21,10 +21,19 @@ This is the exact same technology used by Tesla factories, Amazon warehouses, an
 Professional engineers spend 80% of their time fixing setup issues. If this part feels hard, it’s not because you’re bad at it—it’s because it *is* hard. Follow these steps to get your tools ready.
 
 ### 1. Install the Driver
-Your computer needs a "translator" to talk to the cheap computer chip on the farm kit.
-* **Download:** Get the **CH340 Driver** (search for `CH34xVCPDriver`).
-* **Install:** Run the installer.
-* **⚠️ Mac Users:** You must go to **System Settings > Privacy & Security** and click **Allow** after installing. Then restart your computer.
+**Install Driver for Windows:**
+    * Follow the steps to Install the driver in the following link: 
+    * https://docs.keyestudio.com/projects/KS0567/en/latest/wiki/Arduino/arduino.html#install-driver-for-keyestudio-esp32-plus-board
+
+Your Mac needs a translator to speak to the chip on the farm kit.
+* **Download:** Get the **CH340 Driver** (CH34xVCPDriver).
+* **The Mac Fix:** 1. Run the installer package.
+    2. Open the **CH34xVCPDriver** app in your Applications folder and click **Install**.
+    3. Go to **System Settings > General > Login Items & Extensions**.
+    4. Scroll to the bottom and click the **( i )** next to **Driver Extensions**.
+    5. Toggle the **CH34xVCPDriver** to **ON**.
+    6. **RESTART YOUR MAC.**
+* **Verify:** Open Terminal and type `ls /dev/cu.wch*`. If you see `/dev/cu.wchusbserial...`, it works!
 
 ### 2. Prepare Arduino IDE
 This is where we write the code for the physical board.
@@ -40,9 +49,6 @@ This is where we write the code for the physical board.
     * Go to *Sketch > Include Library > Manage Libraries*.
     * Search for and install **PubSubClient** by Nick O'Leary.
     * (Optional) Install the library folder that came with your specific kit using *Add .ZIP Library*.
-5.  **Install Driver for Windows:**
-    * Follow the steps to Install the driver in the following link: 
-    * https://docs.keyestudio.com/projects/KS0567/en/latest/wiki/Arduino/arduino.html#install-driver-for-keyestudio-esp32-plus-board
 
 ### 3. Prepare the Server (Ignition 8.3)
 
