@@ -135,8 +135,8 @@ void loop() {
   }
 }
 ```
-
-
+## Did it work? If so, move on. If not, ask for help!
+---
 
 ## 📡 Phase 3: The Code (The "Brain")
 
