@@ -90,6 +90,8 @@ You must manually restart the service to activate the new modules.
 2.  Go back to **Modules**.
 3.  Confirm both MQTT modules show a solid green **ACTIVE** status.
 
+![Logo](mqttenginedis.png)
+
 ---
 
 ## 🔌 Phase 2: The Hardware Hookup
