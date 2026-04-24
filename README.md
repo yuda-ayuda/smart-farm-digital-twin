@@ -155,7 +155,9 @@ We need to create an MQTT User so the board is allowed to talk to the server.
 * Click the Namespaces tab, then the Custom sub-tab.
 * Click Create new Custom Namespace...
 * Name: Call it SmartFarm.
-* Subscription Topic: Type farm/# (This tells Ignition to listen to every message that starts with the word "farm").
+* Name: SmartFarm
+* Subscription Topic: yourteam/# (e.g., teambfarm/#). - (This tells Ignition to listen to every message that starts with the word "teambfarm")
+* Advanced: Check Create Writable Tags.
 * Click Save Changes.
 
 ### The Master Sketch
