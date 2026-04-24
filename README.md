@@ -163,6 +163,8 @@ We need to create an MQTT User so the board is allowed to talk to the server.
 ### The Master Sketch
 Copy the code below into a new Arduino file. You must edit the top 3 lines to match your home network.
 
+#🚨ATTENTION - YOU WILL NEED TO FIND AND REPLACE "farm" with your unique Subscription Topic e.g., teambfarm
+
 ```cpp
 #include <WiFi.h>
 #include <PubSubClient.h>
@@ -179,7 +181,7 @@ const char* mqtt_server = "172.16.x.x";   // Your Computer's IP Address
 
 // --- CONFIGURATION ---
 const char* mqtt_user = "esp32";
-const char* mqtt_pass = "farm";
+const char* mqtt_pass = "pass";
 
 // --- PINS ---
 #define ButtonPin 5
