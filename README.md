@@ -145,7 +145,7 @@ We need to create an MQTT User so the board is allowed to talk to the server.
 2.  Navigate to **Connections > MQTT Distributor > Settings > Users**.
 3.  Create a new user:
     * **Username:** `esp32`
-    * **Password:** `farm`
+    * **Password:** `pass`
     * **ACLs:** `RW #` (This creates a "Read/Write All" permission).
 ---
 ## 🏢 Phase 4: Setting up the Post Office (Ignition Gateway)
