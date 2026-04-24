@@ -151,7 +151,7 @@ We need to create an MQTT User so the board is allowed to talk to the server.
 ## 🏢 Phase 4: Setting up the Post Office (Ignition Gateway)
 
 ### 1. Create a Custom Namespace (The "Topic Catcher")
-* In your Ignition Gateway, go to Settings > MQTT Engine.
+* In your Ignition Gateway, go to Connections > MQTT Engine >Settings.
 * Click the Namespaces tab, then the Custom sub-tab.
 * Click Create new Custom Namespace...
 * Name: Call it SmartFarm.
