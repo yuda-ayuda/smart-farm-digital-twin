@@ -142,7 +142,7 @@ void loop() {
 
 We need to create an MQTT User so the board is allowed to talk to the server.
 1.  Go to `http://localhost:8088`.
-2.  Navigate to **Config > MQTT Distributor > Settings > Users**.
+2.  Navigate to **Connections > MQTT Distributor > Settings > Users**.
 3.  Create a new user:
     * **Username:** `esp32`
     * **Password:** `farm`
