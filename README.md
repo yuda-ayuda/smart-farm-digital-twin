@@ -14,6 +14,8 @@ This is the exact same technology used by Tesla factories, Amazon warehouses, an
 * **MQTT:** The language machines use to whisper to each other across the world.
 * **SCADA:** Building a "Mission Control" dashboard to monitor your farm from anywhere.
 
+![Logo](dataFlow.png)
+
 ---
 
 ## 🛠 Phase 1: The Setup
