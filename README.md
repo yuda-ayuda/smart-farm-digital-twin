@@ -39,7 +39,7 @@ Your Mac needs a translator to speak to the chip on the farm kit.
 
 ### 2. Prepare Arduino IDE
 This is where we write the code for the physical board.
-1.  Download **Arduino IDE 2.0**. or later
+1.  Download **Arduino IDE 2.0**. or later `https://www.arduino.cc/en/software/`
 2.  **Add the ESP32 Board Manager:**
     * Go to *Settings* (or Preferences).
     * Paste this link into "Additional Boards Manager URLs":
@@ -54,7 +54,7 @@ This is where we write the code for the physical board.
 
 ### 3. Prepare the Server (Ignition 8.3)
 
-3.1. Install and Launch
+3.1. Install and Launch - IF YOU HAVE ALREADY DONE THIS, SKIP THIS PART
 1.  **Download Ignition 8.3:** Choose the version for your computer (Intel/Apple Silicon for Mac; x64 for Windows).
 2.  **Install:** Run the installer.
 3.  **Launch:** Go to [http://localhost:8088](http://localhost:8088) in your browser.
