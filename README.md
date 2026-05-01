@@ -336,6 +336,7 @@ This guide details the process of creating a manual toggle for the ESP32 light u
      - **Row 0**: Value = `0`, Caption = `OFF`
      - **Row 1**: Value = `1`, Caption = `ON`
    - Click **OK**.
+![Logo](VisionButState.png)
 
 ---
 
@@ -344,6 +345,8 @@ This guide details the process of creating a manual toggle for the ESP32 light u
 2. **Select Event**: On the left sidebar, go to **Property > propertyChange**.
    - *Note: Do not use 'actionPerformed' as it will cause propertyName errors.*
 3. **Paste the Script**:
+
+![Logo](propertyChange.png)
 
 ```python
 # 1. This ensures the script only fires for the 'controlValue' change
