@@ -320,6 +320,56 @@ void reconnect() {
 ---
 
 ## 🎨 Phase 5: Building the Digital Twin (Ignition Designer)
+---
+## Let's start with Vision
+# Ignition Vision: Multi-State Button Setup Guide
+
+This guide details the process of creating a manual toggle for the ESP32 light using a Multi-State Button in Ignition Vision.
+
+## 1. Create the Component
+1. **Open Designer**: Navigate to your Vision Window in the Project Browser.
+2. **Drag & Drop**: From the **Component Palette** (right side), under the **Buttons** tab, drag the **Multi-State Button** onto your window.
+3. **Configure States**: 
+   - In the **Property Editor** (bottom left), find the **States** property.
+   - Click the **Dataset Viewer** icon (small spreadsheet icon).
+   - Ensure you only have **two rows** (delete any others):
+     - **Row 0**: Value = `0`, Caption = `OFF`
+     - **Row 1**: Value = `1`, Caption = `ON`
+   - Click **OK**.
+
+---
+
+## 2. Add the Logic (Python Script)
+1. **Right-Click** the button and select **Scripting**.
+2. **Select Event**: On the left sidebar, go to **Property > propertyChange**.
+   - *Note: Do not use 'actionPerformed' as it will cause propertyName errors.*
+3. **Paste the Script**:
+
+```python
+# 1. This ensures the script only fires for the 'controlValue' change
+if event.propertyName == 'controlValue':
+    # 2. Get the 0 or 1 value from the button
+    val = event.newValue
+    
+    # 3. Translate the number to the word "ON" or "OFF"
+    msg = "ON" if val == 1 else "OFF"
+    
+    # 4. Fire the command to the MQTT broker
+    # Ensure 'Chariot SCADA' matches your MQTT Engine server name exactly
+    server = "Chariot SCADA"
+    
+    # STUDENT NOTE: "daisyfarm" is the unique namespace for this project. 
+    # If you are setting up your own board, replace "daisyfarm" with 
+    # your own unique name (e.g., "johnsfarms/light/set").
+    topic = "daisyfarm/light/set"
+    
+    system.cirruslink.engine.publish(server, topic, msg.encode("utf-8"), 0, 0)
+    
+    # 5. Debug message to the Output Console (Tools > Console)
+    print "Sent %s to %s" % (msg, topic)
+```
+---
+## Doing the same thing in Perspective
 
 ### 1. Open Ignition Designer
 * Launch the Designer and open your project.
