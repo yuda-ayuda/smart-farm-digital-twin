@@ -159,7 +159,7 @@ We need to create an MQTT User so the board is allowed to talk to the server.
 * In your Ignition Gateway, go to Connections > MQTT Engine >Settings.
 * Click the Namespaces tab, then the Custom sub-tab.
 * Click Create new Custom Namespace...
-* Call it artKit.
+* Call it SmartKit.
 * Name: SmartKit
 * Subscription Topic: yourteam/# (e.g., teambfarm/#). - (This tells Ignition to listen to every message that starts with the word "teambfarm")
 * Advanced: Check Create Writable Tags.
