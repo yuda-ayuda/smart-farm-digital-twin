@@ -103,6 +103,7 @@ You must manually restart the service to activate the new modules.
 
 ### 2. The "Servo Trap" (⚠️ CRITICAL)
 * **Before** building the wooden house, plug the Blue Servo Motor into the board.
+    * View instructions here: `https://docs.keyestudio.com/projects/KS0567/en/latest/wiki/Arduino/arduino.html#set-the-angle-of-the-servo`
     * **Brown:** G (Ground)
     * **Red:** V (5V)
     * **Orange:** Pin 26
